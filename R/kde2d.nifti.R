@@ -10,6 +10,7 @@
 #'
 #' @return Matrix of the joint PDF
 #' @export
+#' @importFrom MASS kde2d
 kde2d.nifti = function(
   img1,
   img2,

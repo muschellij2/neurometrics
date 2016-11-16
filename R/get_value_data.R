@@ -9,6 +9,8 @@
 #' If \code{NULL}
 #'
 #' @return List of values from the images
+#' @importFrom neurobase check_nifti same_dims mask_vals
+#' @importFrom methods as
 get_value_data = function(
   img1,
   img2,
@@ -24,10 +26,15 @@ get_value_data = function(
     return(img)
   })
 
-  same_dims(L)
+  if (!same_dims(L)) {
+    stop("Dimensions of images are not the same!")
+  }
 
   if (!is.null(mask)) {
-    same_dims(L, mask)
+    if (!same_dims(L, mask)) {
+      stop("Dimensions of images and the mask are not the same!")
+    }
+
     L = lapply(L, mask_vals, mask = mask)
   } else {
     L = lapply(L, c)
