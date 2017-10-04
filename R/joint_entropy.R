@@ -8,6 +8,6 @@ joint_entropy = function(joint) {
   joint = joint / sum(joint)
 
   keep = joint > 0
-  ent = -sum(joint[keep] * log2(joint[keep]))
+  ent = -sum(joint[keep] * log(joint[keep]))
   return(ent)
 }

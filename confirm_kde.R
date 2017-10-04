@@ -23,3 +23,5 @@ plot(dy)
 lines(xy$y, dyx, col = "red")
 
 
+norm = rowSums()
+
